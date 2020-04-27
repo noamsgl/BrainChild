@@ -3,14 +3,13 @@ import sys
 
 import requests
 
-requests.get(url).json()
 
 def convert(filePointers):
     labels_dict = {"2": "ORG",
                    "3": "MISC",
                    "4": "PERSON"}
     for document in filePointers:
-        json_doc = json.loads(document)
+        json_doc = json.load(open(document,"r",encoding='utf-8'))
 
         converted_doc = dict()
         converted_doc["text"] = json_doc["text"]
